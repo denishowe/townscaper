@@ -4,4 +4,4 @@ A program to generate random save files for the fabulous [Townscaper](https://st
 
 Thanks to its genius developer [Oskar Stålberg](https://twitter.com/OskSta) for creating a Thing of Beauty and for giving me the hint that made this program possible.
 
-![First Output](Random 01.png)
+![First Output](Random 01.jpg)
