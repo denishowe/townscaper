@@ -1,7 +1,10 @@
 const { readFile, writeFile } = require('fs/promises');
 const { parseStringPromise: parseXML } = require('xml2js');
 
-const maxHeight = 10;
+const maxHeight = 6;
+const blockCount = rand(3, 10 * maxHeight);
+const colourCount = rand(1, 4);
+const palette = nOf(colourCount, () => rand(0, 14));
 
 async function run() {
   const directory = 'c:/Users/denis/AppData/LocalLow/Oskar Stalberg/Townscaper';
@@ -12,11 +15,28 @@ async function run() {
   const schema = 'xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"';
 
   const gridFile = saveDirectory + '/' + 'Grid.scape';
-  const grid = (await parseXML(await readFile(gridFile))).SaveData.corners[0].C;
+  const gridText = await readFile(gridFile);
+  const grid = (await parseXML(gridText))
+    .SaveData.corners[0].C
+    .map(g => ({ x: parseInt(g.x[0], 10), y: parseInt(g.y[0], 10) }));
+  // console.log('grid', grid);
 
-  const corners = grid.map(g => `    <C><x>${g.x}</x><y>${g.y}</y><count>1</count></C>`).join('\n');
+  const cornerHeightColour = new Map();
+  nOf(blockCount, () =>
+    cornerHeightColour.getMap(grid.any()).set(randomHeight(), randomColour())
+  );
+  // console.log('chc', cornerHeightColour);
 
-  const voxels = grid.map(_g => `    <V><t>${randomColour()}</t><h>${randomHeight()}</h></V>`).join('\n');
+  const cornerXmls = [];
+  const voxelXmls = [];
+
+  cornerHeightColour.forEach((heightColour, corner) => {
+    cornerXmls.push(cornerXml(corner, heightColour.size));
+    heightColour.forEach((colour, height) => voxelXmls.push(voxelXml(colour, height)));
+  });
+
+  const corners = '\n' + cornerXmls.join('') + '  ';
+  const voxels = '\n' + voxelXmls.join('') + '  ';
 
   const settingsText = `<?xml version="1.0" encoding="utf-8"?>
 <SettingsData ${schema}>
@@ -32,21 +52,37 @@ async function run() {
 
   const saveText = `<?xml version="1.0" encoding="utf-8"?>
 <SaveData ${schema}>
-  <corners>
-${corners}
-  </corners>
-  <voxels>
-${voxels}
-  </voxels>
+  <cam><x>100</x><y>200</y><z>200</z>
+  </cam>
+  <corners>${corners}</corners>
+  <voxels>${voxels}</voxels>
 </SaveData>
 `;
   await writeFile(saveFile, saveText);
 }
 
-function randomHeight() { return Math.floor(maxHeight * Math.random()) }
+function cornerXml({ x, y }, count) { return `    <C><x>${x}</x><y>${y}</y><count>${count}</count></C>\n` }
 
-function randomColour() { return Math.floor(16 * Math.random()) }
+function voxelXml(colour, height) { return `    <V><t>${colour}</t><h>${height}</h></V>\n` }
 
-Array.prototype.any = function any() { return this[Math.random(this.length)] }
+function randomHeight() { return rand(0, maxHeight) }
+
+function randomColour() { return palette.any() }
+
+function rand(min, max) { return Math.floor(min + (max-min+1) * Math.random()**3) }
+
+function nOf(n, f) {
+  const result = [];
+  while (n-- > 0) result.push(f());
+  return result;
+}
+
+Array.prototype.any = function any() { return this[rand(0, this.length-1)] }
+
+Map.prototype.getMap = function getMap(key) {
+  let m = this.get(key);
+  if (!m) this.set(key, m = new Map());
+  return m;
+}
 
 run();

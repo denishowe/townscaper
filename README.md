@@ -6,6 +6,12 @@ Thanks to its genius developer [Oskar Stålberg](https://twitter.com/OskSta) for
 
 ---
 
-![First Output](Random%2001.png)
+![Image](Random%2001.png)
 
-**First Output**
+**First Output** - one block per column
+
+---
+
+![Image](Random%2002.png)
+
+**Second Output** - multiple blocks per column, bigger grid, palette of colours
