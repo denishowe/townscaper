@@ -1,0 +1,17 @@
+{
+  "name": "townscaper",
+  "version": "1.0.0",
+  "description": "Generate Townscapers save files",
+  "main": "townscaper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Denis Howe",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.27.0"
+  },
+  "dependencies": {
+    "xml2js": "^0.4.23"
+  }
+}
