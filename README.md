@@ -8,10 +8,16 @@ Thanks to its genius developer [Oskar Stålberg](https://twitter.com/OskSta) for
 
 ![Image](Random%2001.png)
 
-**First Output** - one block per column
+**One block per column**
 
 ---
 
 ![Image](Random%2002.png)
 
-**Second Output** - multiple blocks per column, bigger grid, palette of colours
+**Multiple blocks per column, bigger grid, palette of colours**
+
+---
+
+![Image](Random%2003.png)
+
+**Limited set of heights**
