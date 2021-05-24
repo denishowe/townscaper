@@ -5,6 +5,7 @@ const maxHeight = 6;
 const blockCount = rand(3, 10 * maxHeight);
 const colourCount = rand(1, 4);
 const palette = nOf(colourCount, () => rand(0, 14));
+const heights = nOf(rand(1, 6), () => rand(0, maxHeight, 2));
 
 async function run() {
   const directory = 'c:/Users/denis/AppData/LocalLow/Oskar Stalberg/Townscaper';
@@ -21,9 +22,10 @@ async function run() {
     .map(g => ({ x: parseInt(g.x[0], 10), y: parseInt(g.y[0], 10) }));
   // console.log('grid', grid);
 
+
   const cornerHeightColour = new Map();
   nOf(blockCount, () =>
-    cornerHeightColour.getMap(grid.any()).set(randomHeight(), randomColour())
+    cornerHeightColour.getMap(grid.any(2)).set(randomHeight(), randomColour())
   );
   // console.log('chc', cornerHeightColour);
 
@@ -52,7 +54,7 @@ async function run() {
 
   const saveText = `<?xml version="1.0" encoding="utf-8"?>
 <SaveData ${schema}>
-  <cam><x>100</x><y>200</y><z>200</z>
+  <cam><x>80</x><y>200</y><z>200</z>
   </cam>
   <corners>${corners}</corners>
   <voxels>${voxels}</voxels>
@@ -65,11 +67,11 @@ function cornerXml({ x, y }, count) { return `    <C><x>${x}</x><y>${y}</y><coun
 
 function voxelXml(colour, height) { return `    <V><t>${colour}</t><h>${height}</h></V>\n` }
 
-function randomHeight() { return rand(0, maxHeight) }
+function randomHeight() { return heights.any(2) }
 
-function randomColour() { return palette.any() }
+function randomColour() { return palette.any(2) }
 
-function rand(min, max) { return Math.floor(min + (max-min+1) * Math.random()**3) }
+function rand(min, max, power = 1) { return Math.floor(min + (max-min+1) * Math.random()**power) }
 
 function nOf(n, f) {
   const result = [];
@@ -77,7 +79,7 @@ function nOf(n, f) {
   return result;
 }
 
-Array.prototype.any = function any() { return this[rand(0, this.length-1)] }
+Array.prototype.any = function any(power = 1) { return this[rand(0, this.length-1, power)] }
 
 Map.prototype.getMap = function getMap(key) {
   let m = this.get(key);
