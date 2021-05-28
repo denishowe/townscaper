@@ -21,3 +21,9 @@ Thanks to its genius developer [Oskar Stålberg](https://twitter.com/OskSta) for
 ![Image](Random%2003.png)
 
 **Limited set of heights**
+
+---
+
+![Image](Random%2004.png)
+
+**9 corners 4 heights 12 colours 92 blocks added 32 unique blocks 88 % occupied**

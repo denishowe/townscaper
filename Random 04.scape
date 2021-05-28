@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SaveData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<cam><x>80</x><y>200</y><z>200</z>
+</cam>
+<corners>
+    <C><x>36</x><y>9</y><count>3</count></C>
+    <C><x>18</x><y>-27</y><count>4</count></C>
+    <C><x>-36</x><y>36</y><count>3</count></C>
+    <C><x>0</x><y>0</y><count>3</count></C>
+    <C><x>-9</x><y>54</y><count>3</count></C>
+    <C><x>9</x><y>27</y><count>4</count></C>
+    <C><x>-27</x><y>45</y><count>4</count></C>
+    <C><x>-18</x><y>-18</y><count>4</count></C>
+    <C><x>-36</x><y>0</y><count>4</count></C>
+  </corners>
+<voxels>
+    <V><t>6</t><h>3</h></V>
+    <V><t>12</t><h>10</h></V>
+    <V><t>14</t><h>9</h></V>
+    <V><t>2</t><h>10</h></V>
+    <V><t>14</t><h>3</h></V>
+    <V><t>4</t><h>9</h></V>
+    <V><t>8</t><h>6</h></V>
+    <V><t>6</t><h>9</h></V>
+    <V><t>2</t><h>10</h></V>
+    <V><t>5</t><h>6</h></V>
+    <V><t>2</t><h>9</h></V>
+    <V><t>12</t><h>3</h></V>
+    <V><t>8</t><h>10</h></V>
+    <V><t>5</t><h>6</h></V>
+    <V><t>6</t><h>10</h></V>
+    <V><t>6</t><h>3</h></V>
+    <V><t>14</t><h>3</h></V>
+    <V><t>6</t><h>6</h></V>
+    <V><t>4</t><h>9</h></V>
+    <V><t>6</t><h>10</h></V>
+    <V><t>6</t><h>10</h></V>
+    <V><t>4</t><h>6</h></V>
+    <V><t>5</t><h>9</h></V>
+    <V><t>8</t><h>3</h></V>
+    <V><t>2</t><h>9</h></V>
+    <V><t>14</t><h>6</h></V>
+    <V><t>8</t><h>10</h></V>
+    <V><t>14</t><h>3</h></V>
+    <V><t>4</t><h>10</h></V>
+    <V><t>14</t><h>3</h></V>
+    <V><t>0</t><h>6</h></V>
+    <V><t>1</t><h>9</h></V>
+  </voxels>
+</SaveData>
