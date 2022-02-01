@@ -3,13 +3,22 @@
   "version": "1.0.0",
   "description": "Generate Townscapers save files",
   "main": "townscaper.js",
-  "scripts": {},
+  "scripts": {
+    "test": "eslint .",
+    "fix": "eslint --fix .",
+    "run": "node townscaper.js",
+    "open": "start \"\" c:/Users/denis/AppData/LocalLow/Oskar\\ Stalberg/Townscaper/Saves/Random.scape"
+  },
   "author": "Denis Howe",
   "license": "ISC",
-  "devDependencies": {
-    "eslint": "^7.27.0"
-  },
   "dependencies": {
     "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.10.2",
+    "@typescript-eslint/parser": "^5.10.2",
+    "eslint": "^8.8.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4"
   }
 }
