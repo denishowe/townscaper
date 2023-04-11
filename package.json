@@ -12,7 +12,7 @@
   "author": "Denis Howe",
   "license": "ISC",
   "dependencies": {
-    "xml2js": "^0.4.23"
+    "xml2js": "^0.5.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.10.2",
